@@ -10,6 +10,7 @@ public class Log extends Div {
         setWidth("100%");
         setHeight("5em");
         getElement().getStyle().set("overflow", "auto");
+        setId("log");
     }
 
     public void log(String message) {

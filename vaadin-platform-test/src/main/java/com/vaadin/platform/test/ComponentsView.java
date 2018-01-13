@@ -70,7 +70,7 @@ public class ComponentsView extends VerticalLayout {
         });
 
         ComboBox<String> combobox = new ComboBox<>("ComboBox label");
-        combobox.setItems("First", "Second", "Third");
+        combobox.setItems("First", "Second", "Second", "Third");
         combobox.addValueChangeListener(e -> {
             log.log("ComboBox value changed from '" + e.getOldValue() + "' to '"
                     + e.getValue() + "'");
@@ -93,8 +93,9 @@ public class ComponentsView extends VerticalLayout {
         });
 
         List<Map<String, String>> gridItems = new ArrayList<>();
-        gridItems.add(map("Some", "Data"));
-        gridItems.add(map("Second", "Row"));
+        for (int i = 0; i < 500; i++) {
+            gridItems.add(map("Item " + i, "Column 2 data for " + i));
+        }
         grid.setItems(gridItems);
 
         HorizontalLayout icons = new HorizontalLayout(
@@ -145,7 +146,8 @@ public class ComponentsView extends VerticalLayout {
             return baos;
         });
         upload.addSucceededListener(e -> {
-            log.log("File of size " + e.getLength() + " received");
+            log.log("File " + e.getFileName() + " of size " + e.getLength()
+                    + " received");
         });
 
         dialog = new Dialog();
